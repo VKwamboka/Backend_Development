@@ -60,7 +60,7 @@ try {
         return rest
     })
     const token = jwt.sign(payload[0], process.env.SECRETKEY as string , {expiresIn:'3600s'})
-    return res.status(200).json({message:'User Loggedin!!!', token, role:user[0].Role, name:user[0].Name})
+    return res.status(200).json({message:'User Loggedin!!!', token, role:user[0].Role, name:user[0].Name,id:user[0].Id, email:user[0].Email, password:user[0].Password})
 
 } catch (error) {
     res.status(500).json(error) 
@@ -99,17 +99,17 @@ export async function Homepage(req:ExtendedRequest,res:Response) {
 // update profile
 export async function updateProfile(req:ExtendedRequest,res:Response){
     try {
-    const {Name,Email,Password}= req.body
+    const {Name,Email}= req.body
     const profile:User[]= await (await _db.exec('getProfile', {id:req.params.id} )).recordset
-    const hashedPassword= await Bcrypt.hash(Password,10)
-      if(req.info){
-        if(profile){
-          await _db.exec('UpdateUser', {id:req.params.id,name:req.info.Name, email:req.info.Email, Name:Name,Email:Email,Password:Password})
+      
+        if(profile.length){
+          await _db.exec('UpdateUser', {id:req.params.id,name:Name, email:Email})
           return res.status(200).json({message:'Updated user'})
         }
-      }
+      
     
       return res.status(404).json({error:'User Not Found'}) 
+    // res.json(profile)
          
       } 
     
