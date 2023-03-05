@@ -1,5 +1,5 @@
 -- USE Airport
-ALTER PROCEDURE InsertOrUpdate (
+CREATE PROCEDURE InsertOrUpdate (
     @id VARCHAR(50), @name VARCHAR(100)=NULL , @email VARCHAR(100)=NULL,
      @destination VARCHAR(100)=NULL , @date DATE=NULL)
 AS

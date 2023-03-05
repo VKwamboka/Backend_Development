@@ -7,4 +7,7 @@ BEGIN
 
 	SELECT * FROM UserTable WHERE Email =@email
 END
-DELETE FROM UserTable
+
+-- DELETE FROM UserTable
+
+-- DROP PROCEDURE getUserByEmail

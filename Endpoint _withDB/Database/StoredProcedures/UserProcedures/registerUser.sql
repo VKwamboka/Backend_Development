@@ -7,3 +7,4 @@ INSERT INTO UserTable(Id,Name,Email,Password)
 VALUES(@id,@name,@email,@password)
 
 END
+DROP PROCEDURE RegisterUser

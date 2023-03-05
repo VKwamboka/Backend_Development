@@ -16,6 +16,7 @@ export interface DecodedData{
   Id: string,
   Name:string,
   Email:string,
+  Password:string,
   Role: string,
   iat: number
   exp: number

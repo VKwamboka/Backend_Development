@@ -22,7 +22,7 @@ for(let user of users){
     const message = {
     from: process.env.EMAIL,
     to: user.Email,
-    subject: "Nodemailer Test",
+    subject: "Verah Airport",
     html
 };
 
